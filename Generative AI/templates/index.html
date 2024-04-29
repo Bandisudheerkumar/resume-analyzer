@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>GENERATIVE AI VOICE TRANSLATOR</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">GENERATIVE AI VOICE TRANSLATOR </div>
+        <div class="box">
+            {% if question %}
+            <div class="item">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="msg">
+                    <p>{{ question }}</p>
+                </div>
+            </div>
+            {% endif %}
+            {% if response %}
+            <div class="item right">
+                <div class="msg">
+                    <p>{{ response }}</p>
+                    <form method="POST">
+                        <button type="submit" name="audio" value="true" class="audio-button">Convert to Audio</button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="typing-area">
+            <div class="input-field">
+                <form method="post">
+                    <input type="text" name="question" placeholder="Type your message" required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <form method="post" action="/">
+                <button type="submit" name="clear" value="true" class="clear-button">Clear Chat</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
